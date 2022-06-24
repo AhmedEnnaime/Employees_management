@@ -11,7 +11,6 @@ class Newuser extends Component {
   state = {
     name: "",
     email: "",
-    password: "",
     phone_number: "",
     address: "",
     nationality: "",
@@ -21,7 +20,6 @@ class Newuser extends Component {
     birth_place: "",
     civil_state: "",
     npassport: "",
-    role: "",
     nbEnfants: "",
     diplomes: "",
     formation: "",
@@ -35,7 +33,7 @@ class Newuser extends Component {
 
   saveEmployee = async (e) => {
     e.preventDefault();
-
+    console.log(this.state);
     const res = await axios.post(
       `http://127.0.0.1:8000/api/add-salarie`,
       this.state
@@ -43,7 +41,6 @@ class Newuser extends Component {
     this.setState({
       name: "",
       email: "",
-      password: "",
       phone_number: "",
       address: "",
       nationality: "",
@@ -53,7 +50,6 @@ class Newuser extends Component {
       birth_place: "",
       civil_state: "",
       npassport: "",
-      role: "",
       nbEnfants: "",
       diplomes: "",
       formation: "",
@@ -66,22 +62,21 @@ class Newuser extends Component {
         icon: "success",
         button: "OK",
       });
-      this.setState({
-        name: "",
-        email: "",
-        password: "",
-        phone_number: "",
-        address: "",
-        nationality: "",
-        cin: "",
-        sex: "",
-        birthday: "",
-        birth_place: "",
-        civil_state: "",
-        numEdentification: "",
-        departement: "",
-        diplomes: "",
-      });
+      // this.setState({
+      //   name: "",
+      //   email: "",
+      //   phone_number: "",
+      //   address: "",
+      //   nationality: "",
+      //   cin: "",
+      //   sex: "",
+      //   birthday: "",
+      //   birth_place: "",
+      //   civil_state: "",
+      //   numEdentification: "",
+      //   departement: "",
+      //   diplomes: "",
+      // });
     } else {
       alert("Server Erreur");
     }
@@ -122,7 +117,7 @@ class Newuser extends Component {
                     value={this.state.email}
                   />
                 </div>
-                <div className="formInput">
+                {/* <div className="formInput">
                   <label>Password</label>
                   <input
                     type="password"
@@ -130,7 +125,7 @@ class Newuser extends Component {
                     onChange={this.handleInput}
                     value={this.state.password}
                   />
-                </div>
+                </div> */}
                 <div className="formInput">
                   <label>Phone Number</label>
                   <input
@@ -187,6 +182,10 @@ class Newuser extends Component {
                 </div>
                 <div className="formInput">
                   <label>Sex</label>
+                  {/* <select onChange={this.handleInput} name="sex">
+                    <option value={this.state.sex}>Homme</option>
+                    <option value={this.state.sex}>Femme</option>
+                  </select> */}
                   <input
                     type="text"
                     name="sex"
@@ -237,15 +236,6 @@ class Newuser extends Component {
                     name="npassport"
                     onChange={this.handleInput}
                     value={this.state.npassport}
-                  />
-                </div>
-                <div className="formInput">
-                  <label>Poste</label>
-                  <input
-                    type="text"
-                    name="role"
-                    onChange={this.handleInput}
-                    value={this.state.role}
                   />
                 </div>
                 <div className="formInput">

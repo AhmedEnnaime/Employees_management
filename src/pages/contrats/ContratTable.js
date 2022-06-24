@@ -59,10 +59,11 @@ class DenseTable extends Component {
       datatable = this.state.contrats.map((row) => (
         <TableRow key={row.id}>
           <TableCell>{row.name}</TableCell>
+          <TableCell>{row.employee}</TableCell>
           <TableCell>{row.created_at}</TableCell>
           <TableCell>{row.type}</TableCell>
-          <TableCell>{row.employee}</TableCell>
           <TableCell>{row.monthly_salary} DH</TableCell>
+          <TableCell>{row.annual_salary} DH</TableCell>
           <TableCell>{row.poste}</TableCell>
           <TableCell className="action">
             <button
@@ -94,10 +95,11 @@ class DenseTable extends Component {
               <TableHead>
                 <TableRow>
                   <TableCell>Reference</TableCell>
+                  <TableCell>Employe</TableCell>
                   <TableCell>Creer en : </TableCell>
                   <TableCell>Type</TableCell>
-                  <TableCell>Employe</TableCell>
                   <TableCell>Salaie de base</TableCell>
+                  <TableCell>Salaie Annuelle</TableCell>
                   <TableCell>Poste</TableCell>
                   <TableCell>Action</TableCell>
                 </TableRow>

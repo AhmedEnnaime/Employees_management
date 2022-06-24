@@ -53,7 +53,7 @@ class NewContrat extends Component {
     });
 
     const res = await axios.post(
-      `http://127.0.0.1:8000/api/add-contrat`,
+      `http://127.0.0.1:8000/api/add-contrat/${this.state.user_id}`,
       data,
       {
         headers: { "Content-Type": "application/json" },
@@ -66,18 +66,18 @@ class NewContrat extends Component {
         icon: "success",
         button: "OK",
       });
-      this.setState({
-        contrat_name: "",
-        poste_occupied: "",
-        contrat_type: "",
-        end_date: "",
-        work_hours_week: "",
-        monthly_salary: "",
-        annual_salary: "",
-        status: "",
-        company: "",
-        user_id: "",
-      });
+      // this.setState({
+      //   contrat_name: "",
+      //   poste_occupied: "",
+      //   contrat_type: "",
+      //   end_date: "",
+      //   work_hours_week: "",
+      //   monthly_salary: "",
+      //   annual_salary: "",
+      //   status: "",
+      //   company: "",
+      //   user_id: "",
+      // });
     }
   };
   render() {
@@ -128,6 +128,7 @@ class NewContrat extends Component {
                     value={this.state.contrat_name}
                   />
                 </div>
+
                 <div className="formInput">
                   <label>Type</label>
                   <input

@@ -6,12 +6,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import { Link } from "react-router-dom";
-import "./datatable.scss";
+import "../users/datatable.scss";
 import axios from "axios";
 // import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from "@mui/icons-material/Delete";
+import PrintIcon from "@mui/icons-material/Print";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import swal from "sweetalert";
 
@@ -28,7 +28,7 @@ import swal from "sweetalert";
 
 // ];
 
-class DenseTable extends Component {
+class Paytable extends Component {
   state = {
     employees: [],
     loading: true,
@@ -44,16 +44,13 @@ class DenseTable extends Component {
     }
   }
 
-  deleteSalarie = async (e, id) => {
-    const thidClickedFunda = e.currentTarget;
-    const res = await axios.delete(`http://127.0.0.1:8000/api/salaries/${id}`);
-    if (res.data.success === true) {
-      thidClickedFunda.closest("tr").remove();
+  imprimer = async (e, id, status) => {
+    if (status) {
+    } else {
       swal({
-        title: "Employe supprimer",
-        text: "Vous avez supprimer un employe",
-        icon: "warnning",
-        dangerMode: true,
+        title: "Impossible",
+        text: "Ce Employe n'a pas encore signer contrat",
+        icon: "error",
         button: "OK",
       });
     }
@@ -91,11 +88,12 @@ class DenseTable extends Component {
             >
               <RemoveRedEyeIcon />
             </Link>
+
             <button
-              onClick={(e) => this.deleteSalarie(e, row.id)}
-              className="deleteButton"
+              onClick={(e) => this.imprimer(e, row.id, row.status)}
+              className="PrintButton"
             >
-              <DeleteIcon />
+              <PrintIcon />
             </button>
           </TableCell>
         </TableRow>
@@ -105,10 +103,10 @@ class DenseTable extends Component {
       <div className="datatable">
         <TableContainer component={Paper}>
           <h1 className="datatableTitle">
-            Ajouter un nouveau employe
-            <Link to="/users/new" className="link">
-              <PersonAddAltIcon />
-            </Link>
+            Imprimer les fiches de paie
+            <span className="tag">
+              <PeopleAltIcon />
+            </span>
           </h1>
           <Table aria-label="a dense table">
             <TableHead>
@@ -131,4 +129,4 @@ class DenseTable extends Component {
   }
 }
 
-export default DenseTable;
+export default Paytable;

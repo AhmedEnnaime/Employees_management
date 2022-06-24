@@ -26,7 +26,8 @@ class Singleuser extends Component {
     civil_state: "",
     npassport: "",
     departement: "",
-    role: "",
+    poste: "",
+    annual_salary: "",
     nbEnfants: "",
     diplomes: "",
     formation: "",
@@ -38,6 +39,7 @@ class Singleuser extends Component {
     monthly_salary: "",
     status: "",
     company: "",
+    debut_date: "",
   };
 
   async componentDidMount() {
@@ -59,7 +61,7 @@ class Singleuser extends Component {
         civil_state: res.data.employees.civil_state,
         npassport: res.data.employees.npassport,
         departement: res.data.employees.departement,
-        role: res.data.employees.role,
+        poste: res.data.employees.poste,
         nbEnfants: res.data.employees.nbEnfants,
         diplomes: res.data.employees.diplomes,
         formation: res.data.employees.formation,
@@ -71,6 +73,8 @@ class Singleuser extends Component {
         monthly_salary: res.data.employees.monthly_salary,
         status: res.data.employees.status,
         company: res.data.employees.company,
+        debut_date: res.data.employees.debut_date,
+        annual_salary: res.data.employees.annual_salary,
       });
     }
   }
@@ -134,18 +138,7 @@ class Singleuser extends Component {
                     <span className="itemKey">Etat Civil : </span>
                     <span className="itemValue">{this.state.civil_state}</span>
                   </div>
-                  <div className="detailItem">
-                    <span className="itemKey">Departement : </span>
-                    <span className="itemValue">{this.state.departement}</span>
-                  </div>
-                  <div className="detailItem">
-                    <span className="itemKey">Poste : </span>
-                    <span className="itemValue">{this.state.role}</span>
-                  </div>
-                  <div className="detailItem">
-                    <span className="itemKey">Nombre des enfants : </span>
-                    <span className="itemValue">{this.state.nbEnfants}</span>
-                  </div>
+
                   <div className="detailItem">
                     <span className="itemKey">Diplomes : </span>
                     <span className="itemValue">{this.state.diplomes}</span>
@@ -156,7 +149,9 @@ class Singleuser extends Component {
                   </div>
                   <div className="detailItem">
                     <span className="itemKey">Contrat : </span>
-                    <span className="itemValue">{this.state.status}</span>
+                    <span className="itemValue">
+                      {this.state.status ? "Oui" : "NO"}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -174,7 +169,7 @@ class Singleuser extends Component {
                   </h3>
                   <div className="detailItem">
                     <span className="itemKey">Poste : </span>
-                    <span className="itemValue"> {this.state.role}</span>
+                    <span className="itemValue"> {this.state.poste}</span>
                   </div>
                   <div className="detailItem">
                     <span className="itemKey">Type :</span>
@@ -189,15 +184,30 @@ class Singleuser extends Component {
                     <span className="itemValue"> {this.state.end_date}</span>
                   </div>
                   <div className="detailItem">
+                    <span className="itemKey">Departement : </span>
+                    <span className="itemValue">{this.state.departement}</span>
+                  </div>
+                  <div className="detailItem">
                     <span className="itemKey">Heurs par semaine : </span>
                     <span className="itemValue">
                       {this.state.work_hours_week}
                     </span>
                   </div>
                   <div className="detailItem">
+                    <span className="itemKey">Nombre des enfants : </span>
+                    <span className="itemValue">{this.state.nbEnfants}</span>
+                  </div>
+
+                  <div className="detailItem">
                     <span className="itemKey">Salaire de base : </span>
                     <span className="itemValue">
                       {this.state.monthly_salary}
+                    </span>
+                  </div>
+                  <div className="detailItem">
+                    <span className="itemKey">Salaire Annuaile : </span>
+                    <span className="itemValue">
+                      {this.state.annual_salary}
                     </span>
                   </div>
                   <div className="detailItem">
